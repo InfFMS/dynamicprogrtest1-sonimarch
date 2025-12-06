@@ -8,3 +8,21 @@ G(n) = G(n - 2) + 1, если n >= 10.
 Формат вывода: программа должна печатать только одно число - ответ на задачу.
 """
 print(228)
+import sys
+sys.setrecursionlimit(10000)
+
+
+s = [0] * 400000
+def F(n):
+    if s[n + 200000] == 0:
+        s[n + 200000] = 2 * (G(n - 3) + 8)
+    return s[n + 200000]
+
+
+def G(n):
+    if n < 10:
+        return 2 * n
+    else:
+        return G(n - 2) + 1
+
+print(F(15548))
